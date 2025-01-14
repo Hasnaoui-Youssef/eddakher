@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject } from '@nestjs/common';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { DateDTO } from 'src/common/dto/date-query.dto';
 import { MonthlyService } from './monthly.service';
 
@@ -6,7 +6,7 @@ import { MonthlyService } from './monthly.service';
 export class MonthlyController {
     constructor(@Inject() private readonly monthlyService : MonthlyService){}
 
-    @Get()
+    @Post()
     getMonthlyReport(@Body() dateDTO : DateDTO){
         return this.monthlyService.getMonthlyReport(dateDTO.month, dateDTO.year);
     }
